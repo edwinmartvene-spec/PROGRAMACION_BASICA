@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apps Móviles</title>
+    <style>
+        *{
+          margin:0;
+          padding:0;
+          box-sizing:border-box;
+          font-family: Arial, Helvetica, sans-serif;
+        }
+
+        html{
+          scroll-behavior:smooth;
+        }
+
+        body{
+          background: #1e1e1e;
+          color: #222;
+        }
+
+        .header{
+          position: sticky;
+          top: 0;
+          z-index: 1000;
+          background: linear-gradient(135deg, #e34f26, #f16529);
+          color: white;
+          padding: 18px 20px;
+          box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+        }
+
+        .logo{
+          display:flex;
+          align-items:center;
+          gap:15px;
+          margin-bottom:15px;
+        }
+
+        .logo img{
+          width:60px;
+          height:60px;
+          object-fit:contain;
+          background:white;
+          border-radius:14px;
+          padding:8px;
+        }
+
+        .logo h1{
+          font-size:2rem;
+        }
+
+        .logo p{
+          font-size:0.95rem;
+        }
+
+        .nav{
+          display:flex;
+          flex-wrap:wrap;
+          gap:10px;
+        }
+
+        .nav a{
+          text-decoration:none;
+          color:white;
+          background: rgba(255,255,255,0.15);
+          padding:10px 14px;
+          border-radius:12px;
+          font-weight:bold;
+          transition:0.3s;
+        }
+
+        .nav a:hover{
+          background: rgba(255,255,255,0.28);
+        }
+
+        .hero{
+          min-height:90vh;
+          display:grid;
+          grid-template-columns: 1fr 1fr;
+          align-items:center;
+          gap:30px;
+          padding:50px 25px;
+          background: linear-gradient(135deg, #fff3ef, #ffffff);
+        }
+
+        .hero-texto h2{
+          font-size:3rem;
+          color:#e34f26;
+          margin-bottom:15px;
+        }
+
+        .hero-texto p{
+          line-height:1.7;
+          font-size:1.05rem;
+          margin-bottom:20px;
+          color:#333;
+        }
+
+        .badge{
+          display:inline-block;
+          background:#e34f26;
+          color:white;
+          padding:8px 14px;
+          border-radius:999px;
+          margin-bottom:15px;
+          font-weight:bold;
+        }
+
+        .btn{
+          display:inline-block;
+          text-decoration:none;
+          background:#2d2d2d;
+          color:white;
+          padding:12px 20px;
+          border-radius:12px;
+          font-weight:bold;
+        }
+
+        .hero-imagen{
+          display:flex;
+          justify-content:center;
+        }
+
+        .hero-imagen img{
+          width:100%;
+          max-width:300px;
+          object-fit:contain;
+        }
+
+        .seccion{
+          padding:50px 25px;
+          background:#f7f7f7;
+          border-top:1px solid #ddd;
+        }
+
+        .card{
+          max-width:1000px;
+          margin:auto;
+          background:white;
+          border-radius:22px;
+          padding:25px;
+          box-shadow:0 8px 20px rgba(0,0,0,0.08);
+          border-left:8px solid #e34f26;
+        }
+
+        .card h2{
+          color:#e34f26;
+          margin-bottom:15px;
+          font-size:2rem;
+        }
+
+        .card h3{
+          color:#e34f26;
+          margin-bottom:10px;
+        }
+
+        .card p,
+        .card li{
+          line-height:1.7;
+          color:#333;
+        }
+
+        .card img{
+          width:100%;
+          max-width:260px;
+          display:block;
+          margin:15px auto;
+        }
+
+        .codigo{
+          background:#1f1f1f;
+          color:white;
+          padding:18px;
+          border-radius:14px;
+          margin:18px 0;
+          font-family: Consolas, monospace;
+          white-space: pre-line;
+          overflow:auto;
+        }
+
+        .grid{
+          display:grid;
+          grid-template-columns: 1fr 1fr;
+          gap:15px;
+          margin-top:20px;
+        }
+
+        .mini-card{
+          background:#fff7f3;
+          border:1px solid #f1c3b5;
+          border-radius:16px;
+          padding:18px;
+        }
+
+        .demo-form{
+          display:grid;
+          gap:12px;
+          margin-top:20px;
+        }
+
+        .demo-form label{
+          font-weight:bold;
+          color:#333;
+        }
+
+        .demo-form input,
+        .demo-form textarea{
+          width:100%;
+          padding:12px;
+          border:1px solid #ccc;
+          border-radius:12px;
+        }
+
+        .demo-form button{
+          border:none;
+          background:#e34f26;
+          color:white;
+          padding:12px;
+          border-radius:12px;
+          font-weight:bold;
+          cursor:pointer;
+        }
+
+        .footer{
+          background:#2d2d2d;
+          color:white;
+          text-align:center;
+          padding:18px;
+          font-weight:bold;
+        }
+
+        @media (max-width: 900px){
+          .hero{
+            grid-template-columns:1fr;
+            text-align:center;
+          }
+
+          .grid{
+            grid-template-columns:1fr;
+          }
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <div class="logo">
+        <img src="img/apps-logo.png" alt="Logo Apps Móviles">
+        <div>
+            <h1>APPS MÓVILES</h1>
+            <p>Tecnología en la palma de tu mano</p>
+        </div>
+    </div>
+
+    <nav class="nav">
+        <a href="#inicio">Inicio</a>
+        <a href="#que-es">¿Qué son?</a>
+        <a href="#caracteristicas">Características</a>
+        <a href="#tipos">Tipos de Apps</a>
+        <a href="#plataformas">Plataformas</a>
+        <a href="#proceso">Creación</a>
+        <a href="#importancia">Importancia</a>
+        <a href="#conclusion">Conclusión</a>
+    </nav>
+</header>
+
+<main>
+
+    <section id="inicio" class="hero">
+        <div class="hero-texto">
+            <span class="badge">Tema de investigación</span>
+            <h2>Desarrollo de Apps Móviles</h2>
+            <p>
+                Esta página está dedicada a explicar qué son las aplicaciones móviles, cómo se crean,
+                los diferentes tipos que existen y su importancia en la vida actual.
+            </p>
+            <a href="#que-es" class="btn">Comenzar</a>
+        </div>
+
+        <div class="hero-imagen">
+            <img src="img/app-principal.png" alt="Dispositivo móvil">
+        </div>
+    </section>
+
+    <section id="que-es" class="seccion">
+        <article class="card">
+            <h2>¿Qué son las Apps Móviles?</h2>
+            <img src="img/que-es-app.png" alt="Aplicación móvil">
+            <p>
+                Una aplicación móvil es un programa informático diseñado para ser ejecutado en teléfonos inteligentes, tabletas y otros dispositivos portátiles.
+                Permiten al usuario realizar tareas específicas, ya sea para entretenimiento, trabajo, comunicación o acceso a información.
+                A diferencia de los programas de computadora, las apps están optimizadas para pantallas táctiles y uso con una sola mano.
+            </p>
+        </article>
+    </section>
+
+    <section id="caracteristicas" class="seccion">
+        <article class="card">
+            <h2>Características principales</h2>
+            <img src="img/caracteristicas.png" alt="Características">
+            <p>
+                <strong>• Portabilidad:</strong> Se pueden usar en cualquier lugar y en cualquier momento.<br>
+                <strong>• Interfaz intuitiva:</strong> Diseñadas para ser fáciles de usar y entender rápidamente.<br>
+                <strong>• Conexión:</strong> Muchas requieren internet para funcionar y actualizarse.<br>
+                <strong>• Funcionalidad:</strong> Están enfocadas en hacer una o varias cosas muy bien.<br>
+                <strong>• Adaptabilidad:</strong> Se ajustan al tamaño y resolución de la pantalla del dispositivo.
+            </p>
+        </article>
+    </section>
+
+    <section id="tipos" class="seccion">
+        <article class="card">
+            <h2>Tipos de Aplicaciones</h2>
+            <img src="img/tipos-apps.png" alt="Tipos de apps">
+            <div class="grid">
+                <div class="mini-card">
+                    <h3>Nativas</h3>
+                    <p>Desarrolladas específicamente para un sistema operativo (Android o iOS), usando lenguajes propios de cada uno.</p>
+                </div>
+                <div class="mini-card">
+                    <h3>Híbridas</h3>
+                    <p>Combinan código web con código nativo, permitiendo que funcionen en varias plataformas con un solo desarrollo.</p>
+                </div>
+                <div class="mini-card">
+                    <h3>Web App</h3>
+                    <p>Son sitios web que se comportan como una aplicación, se acceden desde el navegador sin necesidad de instalar nada.</p>
+                </div>
+                <div class="mini-card">
+                    <h3>Progresivas</h3>
+                    <p>Una mezcla moderna que ofrece experiencia de app nativa pero con tecnologías web.</p>
+                </div>
+                <div class="mini-card">
+                    <h3>De Entretenimiento</h3>
+                    <p>Juegos, redes sociales y servicios de streaming.</p>
+                </div>
+                <div class="mini-card">
+                    <h3>Utilidad</h3>
+                    <p>Calculadoras, calendarios, bloc de notas, gestores de archivos.</p>
+                </div>
+            </div>
+        </article>
+    </section>
+
+    <section id="plataformas" class="seccion">
+        <article class="card">
+            <h2>Principales Plataformas</h2>
+            <img src="img/plataformas.png" alt="Plataformas">
+            <div class="grid">
+                <div class="mini-card">
+                    <h3>Android</h3>
+                    <p>Desarrollado por Google. Es el más usado mundialmente y muy flexible. Se programa con Kotlin o Java.</p>
+                </div>
+                <div class="mini-card">
+                    <h3>iOS (iPhone)</h3>
+                    <p>Desarrollado por Apple. Se caracteriza por su seguridad y diseño elegante. Se programa con Swift.</p>
+                </div>
+                <div class="mini-card">
+                    <h3>Play Store</h3>
+                    <p>Tienda oficial de aplicaciones para dispositivos Android.</p>
+                </div>
+                <div class="mini-card">
+                    <h3>App Store</h3>
+                    <p>Tienda oficial de aplicaciones para dispositivos Apple.</p>
+                </div>
+                <div class="mini-card">
+                    <h3>Windows Phone</h3>
+                    <p>Plataforma antigua de Microsoft, ya discontinuada.</p>
+                </div>
+                <div class="mini-card">
+                    <h3>HarmonyOS</h3>
+                    <p>Nueva plataforma desarrollada por Huawei.</p>
+                </div>
+            </div>
+        </article>
+    </section>
+
+    <section id="proceso" class="seccion">
+        <article class="card">
+            <h2>Proceso de Creación</h2>
+            <img src="img/proceso.png" alt="Proceso">
+            <p>
+                Crear una app no es solo programar, implica varios pasos importantes:<br>
+                <strong>• Planeación:</strong> Definir qué hará la app y para quién.<br>
+                <strong>• Diseño:</strong> Crear la apariencia visual y cómo se moverá el usuario.<br>
+                <strong>• Desarrollo:</strong> Escribir el código y programar las funciones.<br>
+                <strong>• Pruebas:</strong> Revisar que no tenga errores y funcione rápido.<br>
+                <strong>• Publicación:</strong> Subirla a la tienda correspondiente para que cualquiera la descargue.
+            </p>
+        </article>
+    </section>
+
+    <section id="importancia" class="seccion">
+        <article class="card">
+            <h2>Importancia Actual</h2>
+            <p>
+                Hoy en día las aplicaciones móviles son fundamentales en la sociedad. Nos permiten estar conectados,
+                trabajar, estudiar, comprar y divertirnos. Han cambiado la forma en que hacemos negocios y cómo nos relacionamos.
+                El desarrollo de apps es una de las áreas con mayor demanda de trabajo en la industria tecnológica actual.
+            </p>
+
+            <div class="grid">
+                <div class="mini-card">
+                    <h3>Educación</h3>
+                    <p>Apps para aprender idiomas, matemáticas y cursos online.</p>
+                </div>
+                <div class="mini-card">
+                    <h3>Salud</h3>
+                    <p>Control de actividad física, dieta y citas médicas.</p>
+                </div>
+                <div class="mini-card">
+                    <h3>Transporte</h3>
+                    <p>Mapas, rutas y servicios de viaje.</p>
+                </div>
+                <div class="mini-card">
+                    <h3>Comunicación</h3>
+                    <p>Mensajería instantánea y videollamadas.</p>
+                </div>
+            </div>
+
+            <form class="demo-form">
+                <label for="nombre">Tu nombre</label>
+                <input type="text" id="nombre" placeholder="Escribe tu nombre...">
+
+                <label for="correo">Tu correo</label>
+                <input type="email" id="correo" placeholder="ejemplo@email.com">
+
+                <label for="comentario">¿Qué app te gustaría crear?</label>
+                <textarea id="comentario" rows="4" placeholder="Describe tu idea..."></textarea>
+
+                <button type="button">Enviar</button>
+            </form>
+        </article>
+    </section>
+
+    <section id="conclusion" class="seccion">
+        <article class="card">
+            <h2>Conclusión</h2>
+            <p>
+                En conclusión, las aplicaciones móviles son herramientas poderosas que han transformado la tecnología y la vida cotidiana.
+                Gracias a ellas, tenemos el mundo entero en la palma de nuestra mano.
+                Aprender a desarrollarlas es una habilidad muy valiosa y necesaria en el mercado laboral actual,
+                ya que permiten crear soluciones innovadoras para cualquier necesidad que tengamos.
+            </p>
+            <p><strong>Alumno:</strong> [Escribe aquí tu nombre]</p>
+            <p><strong>Materia:</strong> Desarrollo de Aplicaciones Móviles</p
